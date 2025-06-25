@@ -6,9 +6,21 @@
   <title>A Different Story</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css" />
+  <style>
+    @media (max-width: 767px) {
+      .hero-bg-video {
+        display: block !important;
+        width: 100vw;
+        height: 100vh;
+        min-width: 100vw;
+        min-height: 100vh;
+        object-fit: cover;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header class="header" id="header">
+  <header class="header will-animate" id="header">
     <div class="header-container container">
         <div class="logo-wrapper">
           <img src="images/logo.png" class="logo" alt="">
@@ -25,16 +37,24 @@
     </div>
   </header>
   <main>
-    <section class="hero" id="hero">
+    <section class="hero will-animate" id="hero">
+      <video
+        class="hero-bg-video"
+        autoplay
+        loop
+        muted
+        playsinline
+        poster="images/view-from-east.webp"
+      >
+        <source src="videos/hero-bg-trimmed.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
       <div class="hero-content container">
-        <div class="video-icon-hero" id="open-video">
-          <i class="iconoir-play-solid"></i>
-        </div>
         <h1>A Different Story</h1>
         <p>An exquisite luxury project by Kalyan Developers</p>
       </div>
     </section>
-    <section class="about-section" id="about">
+    <section class="about-section will-animate" id="about">
       <div class="container about-container">
         <div class="about-text">
           <h2>A Different Story with Kalyan</h2>
@@ -49,7 +69,7 @@
         </div>
       </div>
     </section>
-    <section class="threed-video-section" id="walkthrough">
+    <section class="threed-video-section will-animate" id="walkthrough">
       <div class="container 3d-video-container">
         <div class="3d-video-content">
           <p>A Different Story</p>
@@ -60,7 +80,7 @@
         </div>
       </div>
     </section>
-    <section class="get-in-touch-section" id="getintouch">
+    <section class="get-in-touch-section will-animate" id="getintouch">
       <div class="container get-in-touch-container">
         <div class="get-in-touch-image-bg">&nbsp;</div>
         <div class="get-in-touch-content">
@@ -76,7 +96,7 @@
         </div>
       </div>
     </section>
-    <footer>
+    <footer class="will-animate">
       <div class="container footer-container">
         <div class="footer-about">
           <img src="images/logo.png" alt="logo">
@@ -113,19 +133,8 @@
     </footer>
   </main>
 
-  <!-- Video Popup Overlay -->
-  <div class="video-popup-overlay" id="video-popup">
-    <div class="video-popup-content">
-      <span class="video-popup-close" id="close-video">&times;</span>
-      <video id="local-video" width="560" height="315" controls preload="metadata">
-        <source src="video/DJI_0001.MP4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </div>
-
   <!-- Video Popup Overlay for 3D Section -->
-  <div class="video-popup-overlay" id="video-popup-threed">
+  <div class="video-popup-overlay will-animate" id="video-popup-threed">
     <div class="video-popup-content">
       <span class="video-popup-close" id="close-video-threed">&times;</span>
       <video id="local-video-threed" width="560" height="315" controls preload="metadata">
@@ -136,29 +145,6 @@
   </div>
 
   <script>
-    // Hero video popup
-    const openBtn = document.getElementById('open-video');
-    const closeBtn = document.getElementById('close-video');
-    const popup = document.getElementById('video-popup');
-    const video = document.getElementById('local-video');
-  
-    openBtn.addEventListener('click', () => {
-      popup.classList.add('active');
-      video.currentTime = 0;
-      video.play();
-    });
-  
-    closeBtn.addEventListener('click', closePopup);
-    popup.addEventListener('click', function(e) {
-      if (e.target === popup) closePopup();
-    });
-  
-    function closePopup() {
-      popup.classList.remove('active');
-      video.pause();
-      video.currentTime = 0;
-    }
-  
     // 3D video popup
     const openBtnThreed = document.getElementById('open-video-threed');
     const closeBtnThreed = document.getElementById('close-video-threed');
@@ -208,8 +194,7 @@
   <script src="https://cdn.jsdelivr.net/npm/smooth-scrollbar@8.8.3/dist/smooth-scrollbar.js"></script>
   <script>
     Scrollbar.init(document.body, {
-      damping: 0.07, // Lower is smoother (0.05–0.1 is a good range)
-      alwaysShowTracks: true
+      damping: 0.01, // Lower is smoother (0.05–0.1 is a good range)
     });
   </script>
   <script>
@@ -225,6 +210,23 @@
         }
       });
     });
-    </script>
+  </script>
+<script>
+  function animateOnScroll(selector, animationClass = 'animate-in') {
+    const elements = document.querySelectorAll(selector);
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add(animationClass);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    elements.forEach(el => observer.observe(el));
+  }
+
+  // Animate only top-level blocks
+  animateOnScroll('.will-animate');
+</script>
 </body>
 </html>
