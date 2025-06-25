@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>A Different Story</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css" />
+</head>
+<body>
+  <header class="header" id="header">
+    <div class="header-container container">
+        <div class="logo-wrapper">
+          <img src="images/logo.png" class="logo" alt="">
+        </div>
+        <div class="menu-container" id="menu-container">
+          Menu &nbsp;&nbsp;<i class="iconoir-menu-scale"></i>
+          <div class="main-nav" id="main-nav">
+            <a href="#header">Home</a>
+            <a href="#walkthrough">Walkthrough</a>
+            <a href="#about">About Us</a>
+            <a href="#getintouch">Contact Us</a>
+          </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="hero" id="hero">
+      <div class="hero-content container">
+        <div class="video-icon-hero" id="open-video">
+          <i class="iconoir-play-solid"></i>
+        </div>
+        <h1>A Different Story</h1>
+        <p>An exquisite luxury project by Kalyan Developers</p>
+      </div>
+    </section>
+    <section class="about-section" id="about">
+      <div class="container about-container">
+        <div class="about-text">
+          <h2>A Different Story with Kalyan</h2>
+          <p>Kalyan Developers, Kerala's leading real estate developer owned by the promoters of Kalyan Jewelers, unveils the most exclusive 11,000-square-foot sky mansion in Thevara, Kochi.</p>
+          <p>Introducing A DIFFERENT STORY, an exquisite luxury project by Kalyan Developers, expertly managed by the renowned IJK-based consultancy, Jones Lang Lasalle (JLL).</p>
+          <p>An unparalleled opportunity to own one of just twenty-five exclusive waterfront residences, each designed to perfection with 10,000-11,000 sqft of luxurious living space, spread across a stunning 2.5 acres. Each apartment features a magnificent 2,000 sqft landscaped terrace and exclusive elevator access for added convenience. Enjoy a lifestyle enriched with lavish amenities and cutting-edge security management systems.</p>
+          <p>Priced between 13-15 CR, booking of this project is by invitation.</p>
+        </div>
+        <div class="about-images">
+          <img src="images/ads-pool.webp" alt="ads-entrance" class="about-image-1">
+          <img src="images/ads-entrance.webp" alt="ads-entrance" class="about-image-2">
+        </div>
+      </div>
+    </section>
+    <section class="threed-video-section" id="walkthrough">
+      <div class="container 3d-video-container">
+        <div class="3d-video-content">
+          <p>A Different Story</p>
+          <h2>Step inside your vision with a 3D Walkthrough</h2>
+          <div class="video-icon-threed" id="open-video-threed">
+            <i class="iconoir-play-solid"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="get-in-touch-section" id="getintouch">
+      <div class="container get-in-touch-container">
+        <div class="get-in-touch-image-bg">&nbsp;</div>
+        <div class="get-in-touch-content">
+          <h2>Get in Touch</h2>
+          <p>Looking for your perfect apartment? Our team is here to guide you every step of the way. Fill out the form and let's get started on your journey home.</p>
+          <form action="">
+            <input type="text" placeholder="Name">
+            <input type="email" placeholder="Email">
+            <input type="tel" placeholder="Phone">
+            <textarea name="message" id="message" placeholder="Message"></textarea>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="container footer-container">
+        <div class="footer-about">
+          <img src="images/logo.png" alt="logo">
+          <p>An exquisite luxury project by Kalyan Developers, expertly managed by the renowned UK-based consultancy, Jones Lang Lasalle (JLL).</p>
+          <ul>
+            <li><a href="#"><i class="iconoir-instagram"></i></a></li>
+            <li><a href="#"><i class="iconoir-x"></i></a></li>
+            <li><a href="#"><i class="iconoir-linkedin"></i></a></li>
+            <li><a href="#"><i class="iconoir-facebook"></i></a></li>
+            <li><a href="#"><i class="iconoir-pinterest"></i></a></li>
+          </ul>
+        </div>
+        <div class="footer-quick-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#header">Home</a></li>
+            <li><a href="#walkthrough">Walkthrough</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#getintouch">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact Information</h4>
+          <ul>
+            <li><a href="#"><i class="iconoir-phone"></i> +91 9847000000</a></li>
+            <li><a href="#"><i class="iconoir-mail"></i> info@kalyandevelopers.com</a></li>
+            <li><a href="#"><i class="iconoir-map-pin"></i> 123, Main Street, Thevara, Kochi</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <p>Copyright &copy; 2025 A Different Story. All rights reserved.</p>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Video Popup Overlay -->
+  <div class="video-popup-overlay" id="video-popup">
+    <div class="video-popup-content">
+      <span class="video-popup-close" id="close-video">&times;</span>
+      <video id="local-video" width="560" height="315" controls preload="metadata">
+        <source src="video/DJI_0001.MP4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <!-- Video Popup Overlay for 3D Section -->
+  <div class="video-popup-overlay" id="video-popup-threed">
+    <div class="video-popup-content">
+      <span class="video-popup-close" id="close-video-threed">&times;</span>
+      <video id="local-video-threed" width="560" height="315" controls preload="metadata">
+        <source src="video/DJI_0039.MOV" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <script>
+    // Hero video popup
+    const openBtn = document.getElementById('open-video');
+    const closeBtn = document.getElementById('close-video');
+    const popup = document.getElementById('video-popup');
+    const video = document.getElementById('local-video');
+  
+    openBtn.addEventListener('click', () => {
+      popup.classList.add('active');
+      video.currentTime = 0;
+      video.play();
+    });
+  
+    closeBtn.addEventListener('click', closePopup);
+    popup.addEventListener('click', function(e) {
+      if (e.target === popup) closePopup();
+    });
+  
+    function closePopup() {
+      popup.classList.remove('active');
+      video.pause();
+      video.currentTime = 0;
+    }
+  
+    // 3D video popup
+    const openBtnThreed = document.getElementById('open-video-threed');
+    const closeBtnThreed = document.getElementById('close-video-threed');
+    const popupThreed = document.getElementById('video-popup-threed');
+    const videoThreed = document.getElementById('local-video-threed');
+  
+    openBtnThreed.addEventListener('click', () => {
+      popupThreed.classList.add('active');
+      videoThreed.currentTime = 0;
+      videoThreed.play();
+    });
+  
+    closeBtnThreed.addEventListener('click', closePopupThreed);
+    popupThreed.addEventListener('click', function(e) {
+      if (e.target === popupThreed) closePopupThreed();
+    });
+  
+    function closePopupThreed() {
+      popupThreed.classList.remove('active');
+      videoThreed.pause();
+      videoThreed.currentTime = 0;
+    }
+    const menuContainer = document.getElementById('menu-container');
+    const mainNav = document.getElementById('main-nav');
+  
+    menuContainer.addEventListener('click', function(e) {
+      // Only toggle if not clicking a link
+      if (e.target.tagName !== 'A') {
+        menuContainer.classList.toggle('open');
+      }
+    });
+  
+    // Close menu when a link is clicked
+    mainNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuContainer.classList.remove('open');
+      });
+    });
+  
+    // Optional: Close menu if clicking outside
+    document.addEventListener('click', function(e) {
+      if (!menuContainer.contains(e.target)) {
+        menuContainer.classList.remove('open');
+      }
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/smooth-scrollbar@8.8.3/dist/smooth-scrollbar.js"></script>
+  <script>
+    Scrollbar.init(document.body, {
+      damping: 0.07, // Lower is smoother (0.05–0.1 is a good range)
+      alwaysShowTracks: true
+    });
+  </script>
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+    </script>
+</body>
+</html>
