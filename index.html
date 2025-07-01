@@ -6,18 +6,6 @@
   <title>A Different Story</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css" />
-  <style>
-    @media (max-width: 767px) {
-      .hero-bg-video {
-        display: block !important;
-        width: 100vw;
-        height: 100vh;
-        min-width: 100vw;
-        min-height: 100vh;
-        object-fit: cover;
-      }
-    }
-  </style>
 </head>
 <body>
   <header class="header will-animate" id="header">
@@ -38,19 +26,12 @@
   </header>
   <main>
     <section class="hero will-animate" id="hero">
-      <video
-        class="hero-bg-video"
-        autoplay
-        loop
-        muted
-        playsinline
-        poster="images/view-from-east.webp"
-      >
-        <source src="videos/hero-bg-trimmed.mp4" type="video/mp4">
+      <video class="hero-bg-video" autoplay loop muted playsinline poster="images/view-from-east.webp">
+        <source src="video/DJI_0001.MP4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <div class="hero-content container">
-        <h1>A Different Story</h1>
+        <img src="images/logo.png" class="logo" alt="">
         <p>An exquisite luxury project by Kalyan Developers</p>
       </div>
     </section>
@@ -70,13 +51,14 @@
       </div>
     </section>
     <section class="threed-video-section will-animate" id="walkthrough">
+      <video class="threed-bg-video" autoplay loop muted playsinline poster="images/ads-pool.webp">
+        <source src="video/DJI_0039.MOV" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
       <div class="container 3d-video-container">
         <div class="3d-video-content">
           <p>A Different Story</p>
           <h2>Step inside your vision with a 3D Walkthrough</h2>
-          <div class="video-icon-threed" id="open-video-threed">
-            <i class="iconoir-play-solid"></i>
-          </div>
         </div>
       </div>
     </section>
@@ -132,41 +114,9 @@
       </div>
     </footer>
   </main>
-
-  <!-- Video Popup Overlay for 3D Section -->
-  <div class="video-popup-overlay will-animate" id="video-popup-threed">
-    <div class="video-popup-content">
-      <span class="video-popup-close" id="close-video-threed">&times;</span>
-      <video id="local-video-threed" width="560" height="315" controls preload="metadata">
-        <source src="video/DJI_0039.MOV" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </div>
+  
 
   <script>
-    // 3D video popup
-    const openBtnThreed = document.getElementById('open-video-threed');
-    const closeBtnThreed = document.getElementById('close-video-threed');
-    const popupThreed = document.getElementById('video-popup-threed');
-    const videoThreed = document.getElementById('local-video-threed');
-  
-    openBtnThreed.addEventListener('click', () => {
-      popupThreed.classList.add('active');
-      videoThreed.currentTime = 0;
-      videoThreed.play();
-    });
-  
-    closeBtnThreed.addEventListener('click', closePopupThreed);
-    popupThreed.addEventListener('click', function(e) {
-      if (e.target === popupThreed) closePopupThreed();
-    });
-  
-    function closePopupThreed() {
-      popupThreed.classList.remove('active');
-      videoThreed.pause();
-      videoThreed.currentTime = 0;
-    }
     const menuContainer = document.getElementById('menu-container');
     const mainNav = document.getElementById('main-nav');
   
