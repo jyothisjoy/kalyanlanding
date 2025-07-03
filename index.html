@@ -31,8 +31,7 @@
         Your browser does not support the video tag.
       </video>
       <div class="hero-content container">
-        <img src="images/logo.png" class="logo" alt="">
-        <p>An exquisite luxury project by Kalyan Developers</p>
+       
       </div>
     </section>
     <section class="about-section will-animate" id="about">
@@ -66,13 +65,28 @@
       <div class="container get-in-touch-container">
         <div class="get-in-touch-image-bg">&nbsp;</div>
         <div class="get-in-touch-content">
-          <h2>Get in Touch</h2>
-          <p>Looking for your perfect apartment? Our team is here to guide you every step of the way. Fill out the form and let's get started on your journey home.</p>
-          <form action="">
-            <input type="text" placeholder="Name">
-            <input type="email" placeholder="Email">
-            <input type="tel" placeholder="Phone">
-            <textarea name="message" id="message" placeholder="Message"></textarea>
+          <h2>Request An Invitation</h2>
+          <p>Our residences are reserved for a distinguished few who value timeless elegance and privacy. Please share your details to request an invitation — our team will be in touch with you personally.</p>
+          <form id="invitation-form" action="mailer.php" method="POST" novalidate>
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="tel" name="phone" placeholder="Phone" required pattern="[0-9\-\+\s]{7,15}">
+            <select name="occupation" required>
+              <option value="" disabled selected>Occupation</option>
+              <option value="ceo">CEO / Managing Director</option>
+              <option value="investment_banker">Investment Banker</option>
+              <option value="entrepreneur">Entrepreneur</option>
+              <option value="doctor">Doctor</option>
+              <option value="lawyer">Lawyer</option>
+              <option value="business_owner">Business Owner</option>
+              <option value="industrialist">Industrialist</option>
+              <option value="cxo">CXO / Executive</option>
+              <option value="venture_capitalist">Venture Capitalist</option>
+              <option value="other">Other</option>
+            </select>
+            <textarea name="message" id="message" placeholder="Message" required></textarea>
+            <div id="form-errors" style="color: #b00020; margin: 10px 0 0 0; font-size: 0.98em;"></div>
+            <div id="form-status" style="color: #1a7f37; margin: 10px 0 0 0; font-size: 0.98em;"></div>
             <button type="submit">Send Message</button>
           </form>
         </div>
@@ -104,7 +118,7 @@
           <h4>Contact Information</h4>
           <ul>
             <li><a href="#"><i class="iconoir-phone"></i> +91 9847000000</a></li>
-            <li><a href="#"><i class="iconoir-mail"></i> info@kalyandevelopers.com</a></li>
+            <li><a href="#"><i class="iconoir-mail"></i> hello@adifferentstory.in</a></li>
             <li><a href="#"><i class="iconoir-map-pin"></i> 123, Main Street, Thevara, Kochi</a></li>
           </ul>
         </div>
@@ -177,6 +191,52 @@
 
   // Animate only top-level blocks
   animateOnScroll('.will-animate');
+</script>
+<script>
+  // AJAX form submission for PHP mailer
+  document.getElementById('invitation-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const errorsDiv = document.getElementById('form-errors');
+    const statusDiv = document.getElementById('form-status');
+    errorsDiv.textContent = '';
+    statusDiv.textContent = '';
+    let errors = [];
+    const name = form.elements['name'].value.trim();
+    const email = form.elements['email'].value.trim();
+    const phone = form.elements['phone'].value.trim();
+    const occupation = form.elements['occupation'].value;
+    const message = form.elements['message'].value.trim();
+    if (!name) errors.push('Please enter your name.');
+    if (!email || !/^\S+@\S+\.\S+$/.test(email)) errors.push('Please enter a valid email address.');
+    if (!phone || !/^[0-9\-\+\s]{7,15}$/.test(phone)) errors.push('Please enter a valid phone number.');
+    if (!occupation) errors.push('Please select your occupation.');
+    if (!message) errors.push('Please enter your message.');
+    if (errors.length > 0) {
+      errorsDiv.innerHTML = errors.join('<br>');
+      return;
+    }
+    fetch('mailer.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        statusDiv.style.color = '#1a7f37';
+        statusDiv.textContent = 'Your request has been sent successfully!';
+        form.reset();
+      } else {
+        statusDiv.style.color = '#b00020';
+        statusDiv.textContent = data.error || 'There was an error sending your request.';
+      }
+    })
+    .catch(() => {
+      statusDiv.style.color = '#b00020';
+      statusDiv.textContent = 'There was an error sending your request.';
+    });
+  });
 </script>
 </body>
 </html>

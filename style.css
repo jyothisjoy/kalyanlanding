@@ -359,8 +359,28 @@ i.iconoir-menu-scale {
   resize: none;
   border: 0;
 }
+.get-in-touch-container form select {
+  padding: 8px 18px;
+  border-radius: 5px;
+  background: #f4f4fc;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  border: 0;
+  color: #222831;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin-bottom: 0;
+}
 .get-in-touch-container form input:focus,
 .get-in-touch-container form textarea:focus {
+  border-color: #bfa16a;
+  outline: none;
+  box-shadow: 0 4px 16px rgba(191,161,106,0.10);
+  background: #fff;
+}
+.get-in-touch-container form select:focus {
   border-color: #bfa16a;
   outline: none;
   box-shadow: 0 4px 16px rgba(191,161,106,0.10);
