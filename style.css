@@ -144,11 +144,8 @@ i.iconoir-menu-scale {
   display: flex;
 }
 
-.hero{
-  background-image: url(images/view-from-east.webp);
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
+.hero {
+  position: relative;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -156,9 +153,9 @@ i.iconoir-menu-scale {
   color: #fff;
   text-align: center;
   margin: 0;
-  position: relative;
   overflow: hidden;
   z-index: 1;
+  background: #000;
 }
 .hero-bg-video {
   position: absolute;
@@ -182,6 +179,98 @@ i.iconoir-menu-scale {
   z-index: 1;
   pointer-events: none;
 }
+/* Swiper Hero Slider Styles */
+.hero-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.hero-slider .swiper-wrapper,
+.hero-slider .swiper-slide,
+.hero-slider picture,
+.hero-slider img {
+  width: 100%;
+  height: 100%;
+}
+.hero-slider .swiper-slide {
+  position: relative;
+}
+.hero-slider picture,
+.hero-slider img {
+  display: block;
+  object-fit: cover;
+}
+.hero-slider .swiper-pagination {
+  position: absolute;
+  bottom: 3vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+.hero-slider .swiper-pagination-bullet {
+  width: 13px;
+  height: 13px;
+  background: rgba(255,255,255,0.5);
+  border: 2px solid #fff;
+  opacity: 1;
+  margin: 0 6px !important;
+  transition: background 0.2s, border 0.2s;
+}
+.hero-slider .swiper-pagination-bullet-active {
+  background: #fff;
+  border-color: var(--primary-color, #8171b2);
+}
+.hero-slider .swiper-button-next,
+.hero-slider .swiper-button-prev {
+  width: 32px;
+  height: 32px;
+  font-size: 1.3rem;
+  background: rgba(0,0,0,0.4);
+  color: #fff;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+.hero-slider .swiper-button-next:hover,
+.hero-slider .swiper-button-prev:hover {
+  background: rgba(0,0,0,0.7);
+}
+.hero-slider .swiper-button-next {
+  right: 2vw;
+}
+.hero-slider .swiper-button-prev {
+  left: 2vw;
+}
+@media (max-width: 767px) {
+  .hero {
+    height: 60vh;
+  }
+  .hero-slider .swiper-button-next,
+  .hero-slider .swiper-button-prev {
+    width: 24px;
+    height: 24px;
+    font-size: 1rem;
+  }
+  .hero-slider .swiper-button-next {
+    right: 10px !important;
+    left: auto !important;
+  }
+  .hero-slider .swiper-button-prev {
+    left: 10px !important;
+    right: auto !important;
+  }
+  .hero-slider .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+  }
+}
+/* Remove old custom slider styles */
+.slider-arrow, .slider-dots, .slider-image { display: none !important; }
+.hero::before { display: none !important; }
 .video-icon-hero i{
   border: 3px solid #fff;
   padding: 16px;
@@ -308,6 +397,23 @@ i.iconoir-menu-scale {
   background: none;
   border: none;
   line-height: 1;
+}
+.partners-container img{
+  max-width: 100%;
+  margin-top: 100px;
+  border-radius: 20px;
+}
+.partners-container .partners-image-mobile{
+  display: none;
+}
+@media screen and (max-width: 767px) {
+  .partners-container .partners-image-desktop{
+    display: none;
+  }
+  .partners-container .partners-image-mobile{
+    display: block;
+    margin-top: 50px;
+  }
 }
 @media (max-width: 600px) {
   .video-popup-content iframe {
@@ -609,4 +715,137 @@ footer {
 .threed-inline-video {
   /* This style is now obsolete and can be removed if not used elsewhere */
   display: none;
+}
+/* Glide.js Slider Styles */
+.slider-section {
+  width: 100vw;
+  max-width: 100vw;
+  overflow: hidden;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  min-height: 320px;
+}
+.main-glide-slider {
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0 auto;
+  position: relative;
+}
+.main-glide-slider .glide__track {
+  width: 100vw;
+  height: 60vh;
+  min-height: 320px;
+  max-height: 80vh;
+}
+.main-glide-slider .glide__slides {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+.main-glide-slider .glide__slide {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+.main-glide-slider picture,
+.main-glide-slider img {
+  width: 100vw;
+  height: 100%;
+  max-width: 100vw;
+  object-fit: cover;
+  display: block;
+  min-height: 320px;
+}
+.main-glide-slider .glide__arrows {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  gap: 16px;
+}
+.main-glide-slider .glide__arrow {
+  background: #fff;
+  border: 2px solid #8171b2;
+  color: #222831;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.main-glide-slider .glide__arrow:hover {
+  background: #8171b2;
+  color: #fff;
+  border-color: #8171b2;
+}
+.main-glide-slider .glide__bullets {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 2;
+}
+.main-glide-slider .glide__bullet {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #8171b2;
+  opacity: 0.7;
+  transition: background 0.2s, border 0.2s, opacity 0.2s;
+  cursor: pointer;
+}
+.main-glide-slider .glide__bullet--active {
+  background: #8171b2;
+  border-color: #8171b2;
+  opacity: 1;
+}
+@media (max-width: 767px) {
+  .main-glide-slider .glide__track {
+    height: 40vh;
+    min-height: 180px;
+    max-height: 50vh;
+  }
+  .main-glide-slider .glide__slide,
+  .main-glide-slider picture,
+  .main-glide-slider img {
+    height: 100%;
+    min-height: 180px;
+    object-fit: cover;
+  }
+  .main-glide-slider .glide__arrows {
+    bottom: 18px;
+    gap: 10px;
+  }
+  .main-glide-slider .glide__arrow {
+    width: 34px;
+    height: 34px;
+    font-size: 1.1rem;
+  }
+  .main-glide-slider .glide__bullets {
+    bottom: 6px;
+    gap: 6px;
+  }
+  .main-glide-slider .glide__bullet {
+    width: 10px;
+    height: 10px;
+  }
 }

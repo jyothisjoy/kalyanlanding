@@ -6,6 +6,8 @@
   <title>A Different Story</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css" />
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 <body>
   <header class="header will-animate" id="header">
@@ -31,7 +33,37 @@
         Your browser does not support the video tag.
       </video>
       <div class="hero-content container">
-       
+      </div>
+    </section>
+    <section class="slider-section">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+      <div class="glide main-glide-slider">
+        <div class="glide__track" data-glide-el="track">
+          <ul class="glide__slides">
+            <li class="glide__slide">
+              <picture>
+                <source srcset="images/banner-1-mob.webp" media="(max-width: 767px)">
+                <img src="images/banner-1.webp" alt="Banner 1">
+              </picture>
+            </li>
+            <li class="glide__slide">
+              <picture>
+                <source srcset="images/banner-2-mob.webp" media="(max-width: 767px)">
+                <img src="images/banner-2.webp" alt="Banner 2">
+              </picture>
+            </li>
+            <li class="glide__slide">
+              <picture>
+                <source srcset="images/banner-3-mob.webp" media="(max-width: 767px)">
+                <img src="images/banner-3.webp" alt="Banner 3">
+              </picture>
+            </li>
+          </ul>
+        </div>
+        <div class="glide__arrows" data-glide-el="controls">
+          <button class="glide__arrow glide__arrow--left" data-glide-dir="<">&#8592;</button>
+          <button class="glide__arrow glide__arrow--right" data-glide-dir=">">&#8594;</button>
+        </div>
       </div>
     </section>
     <section class="about-section will-animate" id="about">
@@ -59,6 +91,12 @@
           <p>A Different Story</p>
           <h2>Step inside your vision with a 3D Walkthrough</h2>
         </div>
+      </div>
+    </section>
+    <section class="partners-section">
+      <div class="container partners-container">
+        <img src="images/partners.webp" alt="partners-1" class="partners-image-desktop">
+        <img src="images/partner-mob.webp" alt="partners-1" class="partners-image-mobile">
       </div>
     </section>
     <section class="get-in-touch-section will-animate" id="getintouch">
@@ -238,5 +276,18 @@
     });
   });
 </script>
+  <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      new Glide('.main-glide-slider', {
+        type: 'carousel',
+        autoplay: 5000,
+        hoverpause: true,
+        animationDuration: 800,
+        perView: 1,
+        gap: 0,
+      }).mount();
+    });
+  </script>
 </body>
 </html>
