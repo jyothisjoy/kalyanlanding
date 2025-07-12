@@ -23,7 +23,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 // Prepare Mailjet API request
-$toEmail = 'joetalkin@gmail.com';
+$toEmail = 'hello@adifferentstory.in';
 $fromEmail = 'no-reply@adifferentstory.in';
 $subject = 'New Invitation Request from A Different Story Website';
 
