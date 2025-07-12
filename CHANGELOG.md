@@ -13,6 +13,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Performance optimizations
 - SEO improvements
 
+### Changed
+- Improved mobile slide height for the Glide.js slider:
+  - Changed `.main-glide-slider .glide__track` height from `50vw` to `60vh` and `max-height` from `70vw` to `100vh` for a more consistent and visually appealing vertical size on mobile devices.
+  - Changed `.main-glide-slider .glide__slide`, `picture`, and `img` height from `50vw` to `100%` and removed `max-height`, ensuring images fill the slider area and maintain aspect ratio.
+
+**Effect:**
+- The slider now appears taller and more consistent on mobile screens, with images filling the available space more naturally.
+- This improves the user experience and visual impact of the slider on smaller devices.
+
 ## [1.0.0] - 2025-01-XX
 
 ### Added
