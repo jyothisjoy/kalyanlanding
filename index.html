@@ -61,10 +61,6 @@
             </li>
           </ul>
         </div>
-        <div class="glide__arrows" data-glide-el="controls">
-          <button class="glide__arrow glide__arrow--left" data-glide-dir="<">&#8592;</button>
-          <button class="glide__arrow glide__arrow--right" data-glide-dir=">">&#8594;</button>
-        </div>
       </div>
     </section>
     <!-- <section class="about-section will-animate" id="about">
@@ -95,7 +91,7 @@
       </div>
     </section>
     <section class="partners-section">
-      <div class="container partners-container">
+      <div class="partners-container">
         <img src="images/partners.webp" alt="partners-1" class="partners-image-desktop">
         <img src="images/partner-mob.webp" alt="partners-1" class="partners-image-mobile">
       </div>
@@ -282,8 +278,8 @@
     document.addEventListener('DOMContentLoaded', function() {
       new Glide('.main-glide-slider', {
         type: 'carousel',
-        autoplay: 5000,
-        hoverpause: true,
+        autoplay: 3000,
+        hoverpause: false,
         animationDuration: 800,
         perView: 1,
         gap: 0,
