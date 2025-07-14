@@ -516,6 +516,9 @@ footer {
   color: #fff;
   padding: 0;
 }
+footer .footer-about img{
+  width: 100px;
+}
 .footer-container {
   display: flex;
   flex-wrap: wrap;
