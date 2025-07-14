@@ -90,6 +90,7 @@ h2{
 }
 .header .logo{
   max-height: 90px;
+  margin-top: 20px;
 }
 .header .menu-container{
   display: flex;
