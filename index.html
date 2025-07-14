@@ -52,7 +52,7 @@
   <main>
     <section class="hero will-animate" id="hero">
       <video class="hero-bg-video" autoplay loop muted playsinline poster="images/view-from-east.webp">
-        <source src="https://adifferentstory-cdn.kloudboy.com/hero-bg-trimmed.mp4" type="video/mp4">
+        <source src="https://adifferentstory-cdn.kloudboy.com/header_video.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <div class="hero-content container">
@@ -126,6 +126,7 @@
               <option value="other">Other</option>
             </select>
             <textarea name="message" id="message" placeholder="Message" required></textarea>
+            <div id="cf-turnstile" class="cf-turnstile" data-sitekey="0x4AAAAAABlEdRYp8EwtOY8G"></div>
             <div id="form-errors" style="color: #b00020; margin: 10px 0 0 0; font-size: 0.98em;"></div>
             <div id="form-status" style="color: #1a7f37; margin: 10px 0 0 0; font-size: 0.98em;"></div>
             <button type="submit">Send Message</button>
@@ -226,7 +227,7 @@
 </script>
 <script>
   // AJAX form submission for PHP mailer
-  document.getElementById('invitation-form').addEventListener('submit', function(e) {
+  document.getElementById('invitation-form').addEventListener('submit', async function(e) {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
@@ -245,6 +246,21 @@
     if (!phone || !/^[0-9\-\+\s]{7,15}$/.test(phone)) errors.push('Please enter a valid phone number.');
     if (!occupation) errors.push('Please select your occupation.');
     if (!message) errors.push('Please enter your message.');
+    // Get Turnstile token
+    const turnstileWidget = document.querySelector('.cf-turnstile iframe');
+    let turnstileToken = '';
+    if (window.turnstile && window.turnstile.getResponse) {
+      turnstileToken = window.turnstile.getResponse();
+    } else {
+      // fallback: try to get value from hidden input
+      const tokenInput = document.querySelector('input[name="cf-turnstile-response"]');
+      if (tokenInput) turnstileToken = tokenInput.value;
+    }
+    if (!turnstileToken) {
+      errors.push('Please complete the CAPTCHA.');
+    } else {
+      formData.append('cf-turnstile-response', turnstileToken);
+    }
     if (errors.length > 0) {
       errorsDiv.innerHTML = errors.join('<br>');
       return;
@@ -259,6 +275,9 @@
         statusDiv.style.color = '#1a7f37';
         statusDiv.textContent = 'Your request has been sent successfully!';
         form.reset();
+        if (window.turnstile && window.turnstile.reset) {
+          window.turnstile.reset();
+        }
       } else {
         statusDiv.style.color = '#b00020';
         statusDiv.textContent = data.error || 'There was an error sending your request.';
@@ -283,5 +302,6 @@
       }).mount();
     });
   </script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 </html>

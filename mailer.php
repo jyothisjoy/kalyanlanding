@@ -22,8 +22,37 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
+// Cloudflare Turnstile secret key
+$turnstileSecret = '0x4AAAAAABlEdZwiKS3ixcJvGmX7fByjvwU';
+$turnstileResponse = isset($_POST['cf-turnstile-response']) ? $_POST['cf-turnstile-response'] : '';
+if (!$turnstileResponse) {
+    echo json_encode(['success' => false, 'error' => 'CAPTCHA verification failed.']);
+    exit;
+}
+// Verify Turnstile token
+$verifyUrl = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+$verifyData = http_build_query([
+    'secret' => $turnstileSecret,
+    'response' => $turnstileResponse,
+    'remoteip' => $_SERVER['REMOTE_ADDR'] ?? ''
+]);
+$verifyOptions = [
+    'http' => [
+        'method' => 'POST',
+        'header' => "Content-type: application/x-www-form-urlencoded",
+        'content' => $verifyData
+    ]
+];
+$verifyContext = stream_context_create($verifyOptions);
+$verifyResult = file_get_contents($verifyUrl, false, $verifyContext);
+$verifyResultData = json_decode($verifyResult, true);
+if (!$verifyResultData || empty($verifyResultData['success'])) {
+    echo json_encode(['success' => false, 'error' => 'CAPTCHA verification failed.']);
+    exit;
+}
+
 // Prepare Mailjet API request
-$toEmail = 'chinchuintuisyz@gmail.com';
+$toEmail = 'hello@adifferentstory.in';
 $fromEmail = 'no-reply@adifferentstory.in';
 $subject = 'New Invitation Request from A Different Story Website';
 
