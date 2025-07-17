@@ -311,7 +311,7 @@ i.iconoir-menu-scale {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 70vh;
+  height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -435,7 +435,7 @@ i.iconoir-menu-scale {
 }
 .get-in-touch-container .get-in-touch-image-bg{
   width: 50%;
-  background-image: url(images/contact-bg.webp);
+  background-image: url(images/contact-us.avif);
   background-size: cover;
   border-radius: 40px 0px 0px 40px;
 }
