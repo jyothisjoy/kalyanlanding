@@ -318,6 +318,14 @@ i.iconoir-menu-scale {
   color: #fff;
   text-align: center;
 }
+@media only screen and (max-width:767px){
+  .threed-video-section{
+    height: 25vh;
+  }
+  .get-in-touch-container .get-in-touch-image-bg{
+    background-image: url(images/contact-mob.avif) !important;
+  }
+}
 .threed-bg-video {
   position: absolute;
   top: 0;
