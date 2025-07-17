@@ -32,7 +32,7 @@
   --body-bg-color: #f8f9fb;
   --footer-bg: #000;
   --bg-overlay-color: rgba(0,0,0,0.5);
-  --bg-overlay-gradient: linear-gradient(180deg, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.3) 100%);
+  --bg-overlay-gradient: linear-gradient(180deg, rgba(0,0,0,0.0) 40%, rgba(0,0,0,0.0) 100%);
 }
 body{
   margin: 0px;
@@ -311,7 +311,7 @@ i.iconoir-menu-scale {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 90vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
