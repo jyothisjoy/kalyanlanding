@@ -306,21 +306,35 @@ i.iconoir-menu-scale {
 .about-container .about-images .about-image-2{
   margin-top: 50px !important;
 }
-.threed-video-section{
-  background-image: url(images/ads-pool.webp);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.threed-video-section {
+  background: none;
+  background-image: none;
+  position: relative;
+  height: auto;
+  min-height: unset;
+  display: block;
+  align-items: unset;
+  justify-content: unset;
   color: #fff;
   text-align: center;
+  padding: 0;
+  margin: 0;
+}
+.threed-fullwidth-video {
+  width: 100vw;
+  max-width: 100vw;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  margin: 0 auto;
+  pointer-events: none;
 }
 @media only screen and (max-width:767px){
-  .threed-video-section{
-    height: 25vh;
+  .threed-fullwidth-video {
+    width: 100vw;
+    height: auto;
+    min-height: unset;
+    max-width: 100vw;
   }
   .get-in-touch-container .get-in-touch-image-bg{
     background-image: url(images/contact-mob.avif) !important;
@@ -409,6 +423,7 @@ i.iconoir-menu-scale {
 }
 .partners-container img{
   max-width: 100%;
+  width: 100%;
 }
 .partners-container .partners-image-mobile{
   display: none;
