@@ -84,14 +84,21 @@
       </div>
     </section>
     <section class="threed-video-section will-animate" id="walkthrough">
-      <video class="threed-fullwidth-video" autoplay loop muted playsinline poster="images/ads-pool.webp">
-        <source src="https://adifferentstory-cdn.kloudboy.com/walkthrough-out-with-s.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+      <div class="video-player-container">
+        <video class="threed-fullwidth-video" controls poster="images/ads-pool.webp">
+          <source src="https://adifferentstory-cdn.kloudboy.com/walkthrough-out-with-s.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-overlay">
+          <div class="play-button" id="playButton">
+            <i class="iconoir-play-solid"></i>
+          </div>
+        </div>
+      </div>
       <div class="container 3d-video-container">
         <div class="3d-video-content">
-          <!-- <p>A Different Story</p>
-          <h2>Step inside your vision with a 3D Walkthrough</h2> -->
+          <p>A Different Story</p>
+          <h2>Step inside your vision with a 3D Walkthrough</h2>
         </div>
       </div>
     </section>
@@ -299,5 +306,47 @@
     });
   </script>
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script>
+    // Video player functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const video = document.querySelector('.threed-fullwidth-video');
+      const playButton = document.getElementById('playButton');
+      const videoOverlay = document.querySelector('.video-overlay');
+      
+      if (video && playButton && videoOverlay) {
+        // Play button click handler
+        playButton.addEventListener('click', function() {
+          video.play();
+          videoOverlay.classList.add('hidden');
+        });
+        
+        // Show overlay when video is paused
+        video.addEventListener('pause', function() {
+          videoOverlay.classList.remove('hidden');
+        });
+        
+        // Hide overlay when video is playing
+        video.addEventListener('play', function() {
+          videoOverlay.classList.add('hidden');
+        });
+        
+        // Show overlay when video ends
+        video.addEventListener('ended', function() {
+          videoOverlay.classList.remove('hidden');
+        });
+        
+        // Handle video controls interaction
+        video.addEventListener('click', function() {
+          if (video.paused) {
+            video.play();
+            videoOverlay.classList.add('hidden');
+          } else {
+            video.pause();
+            videoOverlay.classList.remove('hidden');
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
